@@ -7,14 +7,29 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-    <h1>This is the chapter detail</h1>
-    <p>{{ chapter.title }}</p>
-    <p>This chapter falls under {{ chapter.book.title }}</p>
+    <div class='row'>
+        <main class='col-md-3 mx-auto'>
+            <div class="card" style="width: 20rem;">
+                <div class="card-header text-center">{{ chapter.book.title }}</div>
+                <img src="{{ chapter.book.cover.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <p class="card-text">Published: {{ chapter.book.publication_date }}</p>
+                </div>
+            </div>
+        </main>
 
-    <ul>
-        {% for exercise in chapter.exercise_set.all %}
-            <li><a href="{{ exercise.get_absolute_url }}">{{ exercise.title }}</a></li>
-        {% endfor %}
-    </ul>
+        <aside class='col-md-4 mx-auto'>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                Exercises
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for exercise in chapter.exercise_set.all %}
+                        <li class="list-group-item">{{ exercise.exercise_number }}. <a href="{{ exercise.get_absolute_url }}">{{ exercise.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </aside>
+    </div>
 
 {% endblock content %}

@@ -7,14 +7,30 @@
 
 
 {% block content %}
-    <h1>This is the book detail</h1>
-    <p>{{ book }}</p>
+    <div class='row'>
+        <main class='col-md-3 mx-auto'>
+            <div class="card" style="width: 20rem;">
+                <div class="card-header text-center">{{ book.title }}</div>
+                <img src="{{ book.cover.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text">Published: {{ book.publication_date }}</p>
+                </div>
+            </div>
+        </main>
 
-    <ul>
-        {% for chapter in book.chapter_set.all %}
-            <li><a href="{{ chapter.get_absolute_url }}">{{ chapter.title }}</a></li>
-        {% endfor %}
-    </ul>
+        <aside class='col-md-4 mx-auto'>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  Chapters
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for chapter in book.chapter_set.all %}
+                        <li class="list-group-item">{{ chapter.chapter_number }}. <a href="{{ chapter.get_absolute_url }}">{{ chapter.title }}</a></li>
+                    {% endfor %}
+                </ul>
+              </div>
+        </aside>
+    </div>
 
 {% endblock content %}
 
