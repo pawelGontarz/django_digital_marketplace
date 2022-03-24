@@ -1,2 +1,2 @@
-# django_digital_marketplace
-Django based digital marketplace application
+# Digital Marketplace
+Django based digital marketplace application for learning purposes
