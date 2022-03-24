@@ -42,5 +42,5 @@ class Solution(models.Model):
     image = models.ImageField()
 
     def __str__(self):
-        return f"{self.exercise}-{self.pk}"
+        return f"{self.exercise.title}-{self.pk}"
     
